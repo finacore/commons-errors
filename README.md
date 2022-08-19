@@ -11,3 +11,9 @@ Package to group the different kind of errors.
 ```golang
 err := errors.Default("Somme error message")
 ```
+
+### validation error
+
+```golang
+err := errors.Validation("fieldName", "somme message")
+```
