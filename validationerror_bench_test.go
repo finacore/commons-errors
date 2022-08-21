@@ -1,11 +1,11 @@
-package baseerror
+package commonserrors
 
 import (
 	"reflect"
 	"testing"
 )
 
-func BenchmarkValidationError(b *testing.B) {
+func BenchmarkCreateValidationError(b *testing.B) {
 	type args struct {
 		field   string
 		message string
@@ -28,8 +28,8 @@ func BenchmarkValidationError(b *testing.B) {
 	}
 	for _, tt := range tests {
 		b.Run(tt.name, func(b *testing.B) {
-			if got := Validation(tt.args.field, tt.args.message); !reflect.DeepEqual(got, tt.want) {
-				b.Errorf("Validation() = %v, want %v", got, tt.want)
+			if got := CreateValidationError(tt.args.field, tt.args.message); !reflect.DeepEqual(got, tt.want) {
+				b.Errorf("CreateValidationError() = %v, want %v", got, tt.want)
 			}
 		})
 	}
