@@ -29,11 +29,11 @@ There are three ways to create an __DefaultError__ instance, these are arranged 
 
 ```go
 err := &commonserrors.DefaultError{
-	Message: "the error message goes here"
+	Message: "the error message goes here",
 }
 ```
 
-2. __Use the CreateDefaultError function__, the _CreateDefaultError__ method provide a way to create a new __DefaultError__ object just passing a desired error message.
+2. __Use the CreateDefaultError function__, the _CreateDefaultError__ function provide a way to create a new __DefaultError__ object just passing a desired error message.
 
 ```go
 err := commonserrors.CreateDefaultError("the error message goes here")
@@ -45,48 +45,34 @@ err := commonserrors.CreateDefaultError("the error message goes here")
 err := commonserrors.MakeDefaultError(sommeError)
 ```
 
-<!-- ## Validation
+### ValidationError
 
-The validation model receives a model (struct) that contains the validation tag, in case of some validation fail the return will be a _ValidationError_ array, other else _nil_.
+The __ValidationError__ data structure has as objetive to map a __field__ with some __validation error__ received from the validation process. 
+
+Is important to know that this process has no intention to make validation. It's just a data structure to standardize an validation output in __JSON__ format.
+
+There is two ways to create the __ValidationError__ instance, these are arranged below:
+
+1. __Create object from struct__, this is simple but verbose. I really think is no make sense use this way when there is disponible a very simple method that can be used instead. See the next one.
 
 ```go
-import "github.com/finacore/commons/validation"
-
-//define struct model
-type User struct {
-	Name    string `validate:"required,min=3,max=256"`
-	Surname string `validate:"required,min=3,max=256"`
-	Email   string `validate:"omitempty,email"`
+err := &commonserrors.ValidationError{
+	Field: "field_name",
+	Message: "the error message goes here",
 }
+```
+2. __Use the CreateValidationError function__, the _CreateValidationError__ function provide a way to create a new __ValidationError__ object just passing the name of field and the desired error message.
 
-//create a model based on struct
-userModel := User{
-    Surname: "da Silva"
-    Email: "dasilva@gmail.com"
-}
-
-err := validation.ValidateModel(userModel)
+```go
+err := commonserrors.CreateValidationError("field_name", "the error message goes here")
 ```
 
-## Errors
+### Error()
 
-in this package you can use the follow two errors:
+Both errors objects provide the method __Error()__ that enable the user to obtains the error in a string format. It is simple and follow the patter of the default __error__ object provided nativelly in __Go__ programing language.
 
-* __Default__
-* __Validation__
-
-The default error generate an interface containing just one field __Message__.
+This method usage is simple and can be seen in the example bellow.
 
 ```go
-import "github.com/finacore/commons/baseerror"
-
-err := baseerror.Default("some error message")
+formatedStringError := err.Error()
 ```
-
-The validationError is formed by the fields  __Field:__ and __Message:__ and can be created as showed below.
-
-```go
-import "github.com/finacore/commons/baseerror"
-
-err := baseerror.Validation("field-name", "some error message")
-``` -->
