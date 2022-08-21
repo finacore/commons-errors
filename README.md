@@ -1,8 +1,31 @@
-# Commons Library
+# Commons Errors
 
-Projet to organize some code that are used in a set of this projects repository.
+This module encapsulate some methods and data structure responsibles to organize and manage the erros obtained
+duruing the API execution.
 
-## Validation
+Among the characteristics, the one that stand out are the capability to convert the data structure to an string, following the error interface implemented by the golang 'error'.
+
+To fulfill their objective, this package encapsulate the following errors data structure that will be better described lower.
+
+* __DefaultError:__ Error data structure composed by the key _message_ and their value;
+* __ValidationError:__  Error data structure composed by the tuple of keys (_field_ and _message_).
+
+## Usage
+
+To use this module, the first thing that you want to do is get it using go module. The first thing to do is execute the following command.
+
+```bash
+go get github.com/finacore/commons-errors
+```
+Now you are ready to use the apliacantion in the right way.
+
+### DefaultError
+
+
+
+
+
+<!-- ## Validation
 
 The validation model receives a model (struct) that contains the validation tag, in case of some validation fail the return will be a _ValidationError_ array, other else _nil_.
 
@@ -46,4 +69,4 @@ The validationError is formed by the fields  __Field:__ and __Message:__ and can
 import "github.com/finacore/commons/baseerror"
 
 err := baseerror.Validation("field-name", "some error message")
-```
+``` -->
