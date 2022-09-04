@@ -95,3 +95,38 @@ func TestDefaultError_Error(t *testing.T) {
 		})
 	}
 }
+
+func TestDefaultError_Status(t *testing.T) {
+	type fields struct {
+		Message string
+		Code    int
+	}
+	type args struct {
+		status int
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		args   args
+		status int
+	}{
+		{
+			name: "default-usage",
+			fields: fields{
+				Message: "message not found",
+				Code:    404,
+			},
+			args:   args{status: 404},
+			status: 404,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			e := CreateDefaultError(tt.fields.Message).Status(tt.args.status)
+
+			if e.Code != tt.status {
+				t.Errorf("the error error: got=%d, want=%d", e.Code, tt.args.status)
+			}
+		})
+	}
+}
