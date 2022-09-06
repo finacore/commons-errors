@@ -39,7 +39,7 @@ jobs:
 
   build:
     name: Build and Test
-    needs: golint,horusec
+    needs: [golint, horusec]
     
     runs-on: ubuntu-latest
     env:
