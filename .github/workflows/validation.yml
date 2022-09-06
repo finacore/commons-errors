@@ -9,8 +9,9 @@ on:
 permissions: write-all
 
 jobs:
-  uses: finacore/commons-errors/.github/workflows/lib.yml@main
-
+  basic:
+    uses: finacore/commons-errors/.github/workflows/lib.yml@main
+  
   benchmark:
     name: Performance Regeression.
     runs-on: ubuntu-latest
