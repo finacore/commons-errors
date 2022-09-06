@@ -1,0 +1,74 @@
+name: "Check branch"
+
+on:
+  push:
+    branches:
+      - '**'        
+      - '!master'
+
+permissions: write-all
+
+jobs:
+  golint:
+    name: Go Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: latest
+
+  horusec:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with: 
+          fetch-depth: 0
+
+      - name: Running Horusec Security
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
+          horusec start -p="./" -e="true"
+
+  build:
+    name: Build and Test
+    needs: golint,horusec
+    
+    runs-on: ubuntu-latest
+    env:
+      MONGOURI: "mongodb://test:test@localhost/test"
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        goVersion: ['1.18', '1.19']
+        mongodb-version: ['4.2', '4.4', '5.0', '6.0']
+    
+    steps:
+    - name: Clone Repository 
+      uses: actions/checkout@v3
+      with:
+          fetch-depth: 0
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: ${{ matrix.goVersion }}
+
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.8.0
+      with:
+        mongodb-version: ${{ matrix.mongodb-version }}
+        mongodb-username: test
+        mongodb-password: test
+        mongodb-db: test
+
+    - name: Test
+      run: go test -v ./...
