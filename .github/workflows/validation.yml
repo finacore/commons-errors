@@ -40,3 +40,4 @@ jobs:
           auto-push: false
           # Break the pipilene on error
           fail-on-alert: true
+
