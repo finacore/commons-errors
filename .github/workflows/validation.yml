@@ -86,5 +86,8 @@ jobs:
           tool: 'go'
           output-file-path: output.txt
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          auto-push: false
           alert-threshold: '130%'
+          # DO NOT PUSH BENCH DATA. This work belongs to main repository action
+          auto-push: false
+          # Break the pipilene on error
+          fail-on-alert: true
