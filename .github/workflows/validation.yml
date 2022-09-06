@@ -71,14 +71,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
-      - id: database
-        uses: posteris/ci-database-starter@main
 
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version: "1.18"
+          go-version: "1.19"
       
       - name: Run benchmark
         run:  go test -bench 'Benchmark' ./... | tee output.txt
@@ -89,5 +86,5 @@ jobs:
           tool: 'go'
           output-file-path: output.txt
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          auto-push: true
+          auto-push: false
           alert-threshold: '130%'
