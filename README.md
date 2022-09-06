@@ -1,5 +1,3 @@
-<img src="https://raw.githubusercontent.com/finacore/.github/main/horizontal.svg" width="30%">
-
 # Commons Errors
 
 This module encapsulate some methods and data structure responsibles to organize and manage the erros obtained
@@ -85,3 +83,9 @@ This method usage is simple and can be seen in the example bellow.
 ```go
 formatedStringError := err.Error()
 ```
+
+
+<br><hr><br>
+<div style="text-align: center;">
+<img src="https://raw.githubusercontent.com/finacore/.github/main/horizontal.svg" width="30%">
+</div>
