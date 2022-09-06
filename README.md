@@ -85,7 +85,5 @@ formatedStringError := err.Error()
 ```
 
 
-<br><hr><br>
-<div style="text-align: center;">
-<img src="https://raw.githubusercontent.com/finacore/.github/main/horizontal.svg" width="30%">
-</div>
+<br><hr>
+<p align="center"><img src="https://raw.githubusercontent.com/finacore/.github/main/horizontal.svg" width="30%"></p>
