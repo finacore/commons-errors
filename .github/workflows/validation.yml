@@ -9,7 +9,7 @@ on:
 permissions: write-all
 
 jobs:
-  uses: finacore/commons-errors/.github/workflows/lib.yml
+  uses: finacore/commons-errors/.github/workflows/lib.yml@main
 
   benchmark:
     name: Performance Regeression.
