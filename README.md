@@ -1,5 +1,4 @@
 <img src="https://raw.githubusercontent.com/finacore/.github/main/horizontal.svg" width="30%">
-<br>
 
 # Commons Errors
 
