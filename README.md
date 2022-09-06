@@ -1,3 +1,6 @@
+<img src="https://raw.githubusercontent.com/finacore/.github/main/horizontal.svg" width="30%">
+<br><br>
+
 # Commons Errors
 
 This module encapsulate some methods and data structure responsibles to organize and manage the erros obtained
@@ -43,6 +46,13 @@ err := commonserrors.CreateDefaultError("the error message goes here")
 
 ```go
 err := commonserrors.MakeDefaultError(sommeError)
+```
+
+In order to facilitate the processing of errors created, this kind of error provides a method to identificate the error
+through the code. the method is __Status__ and return the error object, that facilitate the usability as shows below.
+
+```go
+err := commonserrors.CreateDefaultError("internal server error").Status(500)
 ```
 
 ### ValidationError
