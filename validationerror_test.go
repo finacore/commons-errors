@@ -44,7 +44,11 @@ func TestValidationError_Status(t *testing.T) {
 	err := CreateValidationError(field, message)
 	assert.NotNil(err)
 
-	err.Status(500)
+	retError := err.Status(500)
+
+	assert.NotNil(retError)
+	assert.Equal(retError, err)
+
 	assert.Equal(err.Code, 500)
 }
 
