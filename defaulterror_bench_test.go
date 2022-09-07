@@ -17,7 +17,7 @@ func Benchmark_MakeDefaultError(b *testing.B) {
 	}
 }
 
-func Benchmark_Status(b *testing.B) {
+func Benchmark_Set_DefaultError_Status(b *testing.B) {
 	if got := MakeDefaultError(fmt.Errorf("this is an error message")).Status(500); got == nil {
 		b.Errorf("unable to create default error")
 	}
