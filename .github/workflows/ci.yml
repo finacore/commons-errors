@@ -2,9 +2,11 @@ name: "Check branch"
 
 on:
   push:
-    branches:
-      - '**'        
-      - '!main'
+    branches:      
+      - main
+  pull_request:
+    branches: 
+      - main
 
 permissions: write-all
 
@@ -62,6 +64,7 @@ jobs:
 
     - name: Test
       run: go test -v ./...
+
   benchmark:
     name: Performance Regeression.
     runs-on: ubuntu-latest
@@ -86,7 +89,7 @@ jobs:
           output-file-path: output.txt
           github-token: ${{ secrets.GITHUB_TOKEN }}
           alert-threshold: '130%'
-          # DO NOT PUSH BENCH DATA. This work belongs to main repository action
-          auto-push: false
-          # Break the pipilene on error
+          auto-push: true
           fail-on-alert: true
+          comment-on-alert: true
+
