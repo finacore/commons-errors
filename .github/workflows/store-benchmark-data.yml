@@ -1,0 +1,47 @@
+name: "Store Benchmark Data"
+
+on:
+  push:
+    branches: 
+      - main
+
+permissions: write-all
+
+jobs:
+  # Job to analise the benchmark execution and compare the result with the past result
+  # in order to store it at the development history and make this available through 
+  # a graphical notation.
+  benchmark:
+    name: Performance Regeression.
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: "1.19"
+      
+      - name: Run benchmark
+        run:  go test -bench 'Benchmark' ./... | tee output.txt
+      
+      - name: Store benchmark result
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          tool: 'go'
+          output-file-path: output.txt
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # This parameter should be defined case by case. If the execution time is lower then
+          # miliseconda is strongly recomended to use a big value, other else the CI can broke 
+          # overdue of microseconds or nanoseconds. 
+          alert-threshold: '250%'
+          # push data to the gh-pages branch
+          auto-push: true
+          # Do not fail on alert - the alert must fail during the pull request analisys. in this
+          # point, if the push is forced by any reason, the CI donot can interfer in the
+          #process
+          fail-on-alert: false
+          # Create a comment alert to show every one the performance decrease.
+          comment-on-alert: true
+
