@@ -6,7 +6,6 @@ import "fmt"
 type ValidationError struct {
 	Field string `json:"field"`
 	DefaultError
-	// Message string `json:"message"`
 }
 
 // CreateValidationError function to build a new ValidatonError object based on the name of field
