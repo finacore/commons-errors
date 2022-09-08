@@ -84,6 +84,24 @@ This method usage is simple and can be seen in the example bellow.
 formatedStringError := err.Error()
 ```
 
+## Software Quality
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=finacore_commons-errors&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=finacore_commons-errors)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=finacore_commons-errors&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=finacore_commons-errors)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=finacore_commons-errors&metric=coverage)](https://sonarcloud.io/summary/new_code?id=finacore_commons-errors)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=finacore_commons-errors&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=finacore_commons-errors)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=finacore_commons-errors&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=finacore_commons-errors)
+
+
+This lib use [Sonarcloud](https://sonarcloud.io/) to help understend the code quality and security.
+
+In conjunction with [Sonarcloud](https://sonarcloud.io/), this lib uses [Horusec](https://horusec.io/) which blocks CI/CD in any vulnerability incidence
+
+
+## Benchmark
+
+Thinking in the software quality, the __benchmark regression__ was created. It's can be viewed at the link bellow.
+
+[Performance Regeression](https://finacore.github.io/commons-errors/dev/bench/)
 
 <br><hr>
 <p align="center"><img src="https://raw.githubusercontent.com/finacore/.github/main/horizontal.svg" width="30%"></p>
