@@ -13,9 +13,3 @@ test:
 
 clean:
 	rm -rf ./bin
-
-sonar: test
-	sonar-scanner -Dsonar.projectVersion="$(version)"
-
-start-sonar:
-	docker run --name sonarqube -p 9000:9000 sonarqube
