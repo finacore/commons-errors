@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1662603366918,
+  "lastUpdate": 1662605684818,
   "repoUrl": "https://github.com/finacore/commons-errors",
   "entries": {
     "Benchmark": [
@@ -156,6 +156,54 @@ window.BENCHMARK_DATA = {
           {
             "name": "Benchmark_Set_ValidationError_Status",
             "value": 0.0000022,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "gsdenys@gmail.com",
+            "name": "Denys G. santos",
+            "username": "gsdenys"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "5935f47480e1c1bba39d62e2d9c8fb2ca9e63efc",
+          "message": "Merge pull request #13 from finacore/worflow\n\nadd sonar and horusec support",
+          "timestamp": "2022-09-07T22:54:25-04:00",
+          "tree_id": "510c4d73aac79c2b09055cfeb446cad58f7450f5",
+          "url": "https://github.com/finacore/commons-errors/commit/5935f47480e1c1bba39d62e2d9c8fb2ca9e63efc"
+        },
+        "date": 1662605684386,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "Benchmark_MakeDefaultError",
+            "value": 0.0000038,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Set_DefaultError_Status",
+            "value": 0.0000038,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_CreateValidationError",
+            "value": 2e-7,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Set_ValidationError_Status",
+            "value": 0.0000019,
             "unit": "ns/op",
             "extra": "1000000000 times\n2 procs"
           }
