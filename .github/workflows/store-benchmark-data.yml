@@ -1,4 +1,4 @@
-name: "Store Benchmark Data"
+name: "Benchmark"
 
 on:
   push:
