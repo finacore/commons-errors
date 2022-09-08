@@ -3,7 +3,7 @@ default: build
 
 all: clean get-deps test
 
-# version := "0.1.0"
+version := "0.1.0"
 
 test: 
 	mkdir -p bin
@@ -14,7 +14,7 @@ clean:
 	rm -rf ./bin
 
 sonar: test
-	sonar-scanner # -Dsonar.projectVersion="$(version)"
+	sonar-scanner -Dsonar.projectVersion="$(version)"
 
 start-sonar:
 	docker run --name sonarqube -p 9000:9000 sonarqube
