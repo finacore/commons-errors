@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1662611672671,
+  "lastUpdate": 1662645904035,
   "repoUrl": "https://github.com/finacore/commons-errors",
   "entries": {
     "Benchmark": [
@@ -366,6 +366,54 @@ window.BENCHMARK_DATA = {
           {
             "name": "Benchmark_Set_ValidationError_Status",
             "value": 0.0000021,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "gsdenys@gmail.com",
+            "name": "Denys G. santos",
+            "username": "gsdenys"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "15ef948b7bcc5700e8c53437681eb6f016dcd97d",
+          "message": "Merge pull request #18 from finacore/sonar\n\ntry to use coverage",
+          "timestamp": "2022-09-08T10:04:43-04:00",
+          "tree_id": "0304418f742e7788cc662fd75db96da9b3a27b79",
+          "url": "https://github.com/finacore/commons-errors/commit/15ef948b7bcc5700e8c53437681eb6f016dcd97d"
+        },
+        "date": 1662645903193,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "Benchmark_MakeDefaultError",
+            "value": 0.0000022,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Set_DefaultError_Status",
+            "value": 0.0000034,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_CreateValidationError",
+            "value": 1e-7,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Set_ValidationError_Status",
+            "value": 0.0000032,
             "unit": "ns/op",
             "extra": "1000000000 times\n2 procs"
           }
