@@ -17,8 +17,8 @@ jobs:
         with:
           go-version: '1.19'
       
-      - name: Run unity test and coverage
-      - run: make test
+      - name: Run coverage and benchmark
+        run: make test
 
       - name: Archive code coverage and bench results
         uses: actions/upload-artifact@v3
