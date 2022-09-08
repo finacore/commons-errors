@@ -13,7 +13,7 @@ func CreateDefaultError(message string) *DefaultError {
 	}
 }
 
-// MakeDefaultError function to build a new DefaultError object based on a pre existend error.
+// MakeDefaultError function to build a new DefaultError object based on a pre existend error
 func MakeDefaultError(err error) *DefaultError {
 	return CreateDefaultError(err.Error())
 }
