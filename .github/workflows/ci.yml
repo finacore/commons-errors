@@ -22,26 +22,11 @@ jobs:
         with:
           version: latest
 
-  horusec:
-    name: Security Analisys
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-        with: 
-          fetch-depth: 0
-
-      - name: Running Horusec Security
-        run: |
-          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
-          horusec start -p="./" -e="true"
-
   build:
     name: Build and Test
     runs-on: ubuntu-latest
 
-    needs: [golint, horusec]
+    needs: golint
     
     strategy:
       fail-fast: false
@@ -62,11 +47,51 @@ jobs:
     - name: Test
       run: go test -v ./...
 
+  sonar:
+    runs-on: ubuntu-latest
+    needs: build
+    
+    name: SonarCloud Scan
+    
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Test and coverage executions
+        run: |
+          mkdir -p bin
+          go test -short -coverprofile=bin/cov.out ./...
+      
+      - name: Analyze with SonarCloud
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  
+
+  horusec:
+    name: Security Analisys
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with: 
+          fetch-depth: 0
+
+      - name: Running Horusec Security
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
+          horusec start -p="./" -e="true"
+
   benchmark:
     name: Performance Regeression.
     runs-on: ubuntu-latest
 
-    needs: build
+    needs: [sonar, horusec]
 
     steps:
       - uses: actions/checkout@v2
