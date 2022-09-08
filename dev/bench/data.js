@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1662656445823,
+  "lastUpdate": 1662659740982,
   "repoUrl": "https://github.com/finacore/commons-errors",
   "entries": {
     "Benchmark": [
@@ -630,6 +630,54 @@ window.BENCHMARK_DATA = {
           {
             "name": "Benchmark_Set_ValidationError_Status",
             "value": 0.0000209,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "gsdenys@gmail.com",
+            "name": "Denys G. santos",
+            "username": "gsdenys"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "5e32be9829ae1d9bab955af7aea4be66aadcc08e",
+          "message": "Merge pull request #24 from finacore/codacy\n\nCodacy",
+          "timestamp": "2022-09-08T13:55:00-04:00",
+          "tree_id": "c99f8c407a4014f10fa16042a386432f96f8bf6e",
+          "url": "https://github.com/finacore/commons-errors/commit/5e32be9829ae1d9bab955af7aea4be66aadcc08e"
+        },
+        "date": 1662659740367,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "Benchmark_MakeDefaultError",
+            "value": 0.0000045,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Set_DefaultError_Status",
+            "value": 0.000002,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_CreateValidationError",
+            "value": 1e-7,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Set_ValidationError_Status",
+            "value": 0.0000023,
             "unit": "ns/op",
             "extra": "1000000000 times\n2 procs"
           }
