@@ -7,12 +7,16 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+const (
+	errorMessage string = "the error message"
+	fieldname    string = "fieldname"
+)
+
 func TestCreateValidationError(t *testing.T) {
 	assert := assert.New(t)
 
-	field := "fieldname"
-	message := "the error message"
-
+	field := fieldname
+	message := errorMessage
 	err := CreateValidationError(field, message)
 	assert.NotNil(err)
 
@@ -24,8 +28,8 @@ func TestCreateValidationError(t *testing.T) {
 func TestValidationError_Error(t *testing.T) {
 	assert := assert.New(t)
 
-	field := "fieldname"
-	message := "the error message"
+	field := fieldname
+	message := errorMessage
 
 	err := CreateValidationError(field, message)
 	assert.NotNil(err)
@@ -38,8 +42,8 @@ func TestValidationError_Error(t *testing.T) {
 func TestValidationError_Status(t *testing.T) {
 	assert := assert.New(t)
 
-	field := "fieldname"
-	message := "the error message"
+	field := fieldname
+	message := errorMessage
 
 	err := CreateValidationError(field, message)
 	assert.NotNil(err)
@@ -50,10 +54,4 @@ func TestValidationError_Status(t *testing.T) {
 	assert.Equal(retError, err)
 
 	assert.Equal(err.Code, 500)
-}
-
-func Benchmark_Set_ValidationError_Status(b *testing.B) {
-	if got := MakeDefaultError(fmt.Errorf("this is an error message")).Status(500); got == nil {
-		b.Errorf("unable to create default error")
-	}
 }

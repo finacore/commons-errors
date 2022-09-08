@@ -6,6 +6,8 @@ import (
 	"testing"
 )
 
+const justSomeTest = "just some test"
+
 func TestCreateDefaultError(t *testing.T) {
 	type args struct {
 		message string
@@ -16,12 +18,12 @@ func TestCreateDefaultError(t *testing.T) {
 		want *DefaultError
 	}{
 		{
-			name: "basic-error",
-			args: args{message: "just some test"},
-			want: &DefaultError{Message: "just some test"},
+			name: "basic-error-create",
+			args: args{message: justSomeTest},
+			want: &DefaultError{Message: justSomeTest},
 		},
 		{
-			name: "no-message",
+			name: "no-message-create",
 			args: args{message: ""},
 			want: &DefaultError{Message: ""},
 		},
@@ -45,12 +47,12 @@ func TestMakeDefaultError(t *testing.T) {
 		want *DefaultError
 	}{
 		{
-			name: "basic-error",
-			args: args{err: errors.New("just some test")},
-			want: &DefaultError{Message: "just some test"},
+			name: "basic-error-make",
+			args: args{err: errors.New(justSomeTest)},
+			want: &DefaultError{Message: justSomeTest},
 		},
 		{
-			name: "no-message",
+			name: "no-message-make",
 			args: args{err: errors.New("")},
 			want: &DefaultError{Message: ""},
 		},
@@ -74,12 +76,12 @@ func TestDefaultError_Error(t *testing.T) {
 		want   string
 	}{
 		{
-			name:   "basic-error",
-			fields: fields{Message: "This is just a test"},
-			want:   "This is just a test",
+			name:   "basic-error-error",
+			fields: fields{Message: justSomeTest},
+			want:   justSomeTest,
 		},
 		{
-			name:   "no-message",
+			name:   "no-message-error",
 			fields: fields{Message: ""},
 			want:   "",
 		},
