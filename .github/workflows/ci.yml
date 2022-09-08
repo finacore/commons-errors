@@ -1,9 +1,6 @@
-name: "Check branch"
+name: "CI"
 
 on:
-  push:
-    branches:      
-      - main
   pull_request:
     branches: 
       - main
@@ -88,8 +85,13 @@ jobs:
           tool: 'go'
           output-file-path: output.txt
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          alert-threshold: '130%'
-          auto-push: true
+          alert-threshold: '250%'
+          # Do not publish the benchmark result. The purpose of this workflow is just to
+          # say if the merge can be done or not.
+          auto-push: false
+          # in case of time executio overdue the threshold, the CI shold fail. 
           fail-on-alert: true
-          comment-on-alert: true
+          # The comment in this task is not available. The purpose of this workflow is 
+          # just to say if the merge can be done or not.
+          comment-on-alert: false
 
