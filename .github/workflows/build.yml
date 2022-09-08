@@ -11,12 +11,16 @@ jobs:
     steps:
       - name: Clone Repository
         uses: actions/checkout@master
+        
       - name: Setup go
         uses: actions/setup-go@v3
         with:
           go-version: '1.19'
+      
+      - name: Run unity test and coverage
       - run: make test
-      - name: Archive code coverage results
+
+      - name: Archive code coverage and bench results
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage-report
@@ -39,3 +43,43 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  benchmark:
+    needs: build
+    name: Performance Regeression.
+    runs-on: ubuntu-latest
+
+    steps:
+      # - uses: actions/checkout@v2
+
+      # - name: Set up Go
+      #   uses: actions/setup-go@v3
+      #   with:
+      #     go-version: "1.19"
+      
+      # - name: Run benchmark
+      #   run:  go test -bench 'Benchmark' ./... | tee output.txt
+      - name: Download code coverage results
+        uses: actions/download-artifact@v3
+        with:
+          name: code-coverage-report
+          path: bin
+
+      - name: Store benchmark result
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          tool: 'go'
+          output-file-path: bin/bench.txt
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # This parameter should be defined case by case. If the execution time is lower then
+          # miliseconda is strongly recomended to use a big value, other else the CI can broke 
+          # overdue of microseconds or nanoseconds. 
+          alert-threshold: '250%'
+          # push data to the gh-pages branch
+          auto-push: true
+          # Do not fail on alert - the alert must fail during the pull request analisys. in this
+          # point, if the push is forced by any reason, the CI donot can interfer in the
+          #process
+          fail-on-alert: false
+          # Create a comment alert to show every one the performance decrease.
+          comment-on-alert: true
