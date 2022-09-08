@@ -1,3 +1,6 @@
+// Package commonserrors contains encapsulate the basica errors types to helps programers to write
+// low code and at the some time make a good error handling, providing a good log events
+// as needed
 package commonserrors
 
 import "fmt"
