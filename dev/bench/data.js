@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1662659740982,
+  "lastUpdate": 1662667256827,
   "repoUrl": "https://github.com/finacore/commons-errors",
   "entries": {
     "Benchmark": [
@@ -678,6 +678,54 @@ window.BENCHMARK_DATA = {
           {
             "name": "Benchmark_Set_ValidationError_Status",
             "value": 0.0000023,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "gsdenys@gmail.com",
+            "name": "Denys G. Santos",
+            "username": "gsdenys"
+          },
+          "committer": {
+            "email": "gsdenys@gmail.com",
+            "name": "Denys G. Santos",
+            "username": "gsdenys"
+          },
+          "distinct": true,
+          "id": "70befb62ba92677d6d749180b39b76ff3b314923",
+          "message": "remove old code",
+          "timestamp": "2022-09-08T15:59:59-04:00",
+          "tree_id": "b33ee08cf5242fd9ed77b94648d70dc28721e27b",
+          "url": "https://github.com/finacore/commons-errors/commit/70befb62ba92677d6d749180b39b76ff3b314923"
+        },
+        "date": 1662667256415,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "Benchmark_MakeDefaultError",
+            "value": 0.0000032,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Set_DefaultError_Status",
+            "value": 0.0000021,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_CreateValidationError",
+            "value": 1e-7,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Set_ValidationError_Status",
+            "value": 0.0000022,
             "unit": "ns/op",
             "extra": "1000000000 times\n2 procs"
           }
