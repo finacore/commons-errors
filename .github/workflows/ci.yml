@@ -63,6 +63,7 @@ jobs:
         run: |
           mkdir -p bin
           go test -short -coverprofile=bin/cov.out ./...
+          go tool cover -func=/github/workspace/bin/cov.out
       
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
