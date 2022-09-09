@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1662733172286,
+  "lastUpdate": 1662735450065,
   "repoUrl": "https://github.com/finacore/commons-errors",
   "entries": {
     "Benchmark": [
@@ -888,6 +888,60 @@ window.BENCHMARK_DATA = {
           {
             "name": "Benchmark_Set_ValidationError_Status",
             "value": 0.0000022,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "gsdenys@gmail.com",
+            "name": "Denys G. santos",
+            "username": "gsdenys"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "27b3d627c05ac606cc699322858f5e8a42bbf584",
+          "message": "Merge pull request #26 from finacore/pull-workflow\n\nPull workflow",
+          "timestamp": "2022-09-09T10:56:36-04:00",
+          "tree_id": "640cfc8691181337ef7a0f89d3a30a2281d77086",
+          "url": "https://github.com/finacore/commons-errors/commit/27b3d627c05ac606cc699322858f5e8a42bbf584"
+        },
+        "date": 1662735449250,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "Benchmark_CreateDefaultError",
+            "value": 2e-7,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_MakeDefaultError",
+            "value": 0.0000043,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Set_DefaultError_Status",
+            "value": 0.0000049,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_CreateValidationError",
+            "value": 2e-7,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Set_ValidationError_Status",
+            "value": 0.0000039,
             "unit": "ns/op",
             "extra": "1000000000 times\n2 procs"
           }
