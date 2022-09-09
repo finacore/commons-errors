@@ -1,4 +1,4 @@
-name: Analisys Store
+name: Build & Test
 
 on:
   push:
