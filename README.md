@@ -1,5 +1,8 @@
 # Commons Errors
 
+[![Build & Test](https://github.com/finacore/commons-errors/actions/workflows/build.yml/badge.svg)](https://github.com/finacore/commons-errors/actions/workflows/build.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/finacore/commons-errors.svg)](https://pkg.go.dev/github.com/finacore/commons-errors)
+
 This module encapsulate some methods and data structure responsibles to organize and manage the erros obtained
 duruing the API execution.
 
