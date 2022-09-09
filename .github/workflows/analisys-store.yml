@@ -1,9 +1,10 @@
+name: Analisys Store
+
 on:
   push:
     branches:
       - main
 
-name: Analisys Store
 permissions: write-all
 
 jobs:
