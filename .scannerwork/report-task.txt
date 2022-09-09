@@ -1,0 +1,7 @@
+organization=finacore
+projectKey=finacore_commons-errors
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.31745
+dashboardUrl=https://sonarcloud.io/dashboard?id=finacore_commons-errors
+ceTaskId=AYMgTHfTQZQ0Kh8XIjwQ
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYMgTHfTQZQ0Kh8XIjwQ
