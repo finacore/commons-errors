@@ -17,6 +17,7 @@ jobs:
         with:
           version: latest
 
+
   horusec:
     name: Identify Vulnerabilities
     runs-on: ubuntu-latest
@@ -31,12 +32,13 @@ jobs:
           curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
           horusec start -p="./" -e="true"
 
+
   build:
+    needs: [golint, horusec]
+
     name: Build and Test
     runs-on: ubuntu-latest
 
-    needs: [golint, horusec]
-    
     strategy:
       fail-fast: false
       matrix:
@@ -57,10 +59,13 @@ jobs:
     - name: Test
       run: go test -v ./...
 
+
   sonarcloud:
     needs: build
+
     name: SonarCloud
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checout repository
         uses: actions/checkout@v2
