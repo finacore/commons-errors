@@ -5,6 +5,21 @@
 // structure to an string, following the error interface implemented by the golang error, As
 // well the agregation of an integer error code that simplify the error recognitions less the
 // necessity of make reflections in the received object.
+//
+// The first step to use this package is to get it through the command below, then you will be
+// able to import it in your code.
+//
+//	go get github.com/finacore/commons-errors
+//
+// To avoid the conflicts between packages during the imnport phase, is strongly recommended
+// select other name for this package in the moment of import like shown below:
+//
+//	import (
+//		commonserrors "github.com/finacore/commons-errors"
+//	)
+//
+// Once imported you can use the package as you prefer. So read the function and methods
+// documentation to know how to use this packagage.
 package commonserrors
 
 // DefaultError is a representaton of the most basic kind of error in this package. It's

@@ -14,7 +14,9 @@
 // To avoid the conflicts between packages during the imnport phase, is strongly recommended
 // select other name for this package in the moment of import like shown below:
 //
-// import commonserrors "github.com/finacore/commons-errors"
+//	import (
+//		commonserrors "github.com/finacore/commons-errors"
+//	)
 //
 // Once imported you can use the package as you prefer. So read the function and methods
 // documentation to know how to use this packagage.
