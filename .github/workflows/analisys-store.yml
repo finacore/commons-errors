@@ -3,9 +3,9 @@ on:
     branches:
       - main
 
+name: Analisys Store
 permissions: write-all
-     
-name: Main Workflow
+
 jobs:
   build:
     name: Compile and Test
