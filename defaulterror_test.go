@@ -20,18 +20,18 @@ func TestCreateDefaultError(t *testing.T) {
 		{
 			name: "basic-error-create",
 			args: args{message: justSomeTest},
-			want: &DefaultError{Message: justSomeTest},
+			want: &DefaultError{Message: justSomeTest, Code: 500},
 		},
 		{
 			name: "no-message-create",
 			args: args{message: ""},
-			want: &DefaultError{Message: ""},
+			want: &DefaultError{Message: "", Code: 500},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := CreateDefaultError(tt.args.message); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("CreateDefaultError() = %v, want %v", got, tt.want)
+				t.Errorf("CreateDefaultError() = %v, want: %v", got, tt.want)
 			}
 		})
 	}
@@ -49,12 +49,12 @@ func TestMakeDefaultError(t *testing.T) {
 		{
 			name: "basic-error-make",
 			args: args{err: errors.New(justSomeTest)},
-			want: &DefaultError{Message: justSomeTest},
+			want: &DefaultError{Message: justSomeTest, Code: 500},
 		},
 		{
 			name: "no-message-make",
 			args: args{err: errors.New("")},
-			want: &DefaultError{Message: ""},
+			want: &DefaultError{Message: "", Code: 500},
 		},
 	}
 	for _, tt := range tests {
