@@ -1,99 +1,39 @@
 # Commons Errors
-
-[![Build & Test](https://github.com/finacore/commons-errors/actions/workflows/build.yml/badge.svg)](https://github.com/finacore/commons-errors/actions/workflows/build.yml)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=finacore_commons-errors&metric=coverage)](https://sonarcloud.io/summary/new_code?id=finacore_commons-errors)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=finacore_commons-errors&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=finacore_commons-errors)
 [![Go Reference](https://pkg.go.dev/badge/github.com/finacore/commons-errors.svg)](https://pkg.go.dev/github.com/finacore/commons-errors)
 
-This module encapsulate some methods and data structure responsibles to organize and manage the erros obtained
-duruing the API execution.
+This module is part of __FINACORE__ software and has as objective to facilitate the error identification and handling throughout the time of software execution. 
 
-Among the characteristics, the one that stand out are the capability to convert the data structure to an string, following the error interface implemented by the golang 'error'.
+As all other products and modules of __FINACORE__ project, this package has a strong code documentations that generates the fullfil tutorial disponible at [go.dev](https://pkg.go.dev/github.com/finacore/commons-errors) reference page, that is enough for their usage.
 
-To fulfill their objective, this package encapsulate the following errors data structure that will be better described lower.
+Read the full documentation at: [https://pkg.go.dev/github.com/finacore/commons-errors](https://pkg.go.dev/github.com/finacore/commons-errors)
 
-* __DefaultError:__ Error data structure composed by the key _message_ and their value;
-* __ValidationError:__  Error data structure composed by the tuple of keys (_field_ and _message_).
+## Software Quality
 
-## Usage
+[![Build & Test](https://github.com/finacore/commons-errors/actions/workflows/build.yml/badge.svg)](https://github.com/finacore/commons-errors/actions/workflows/build.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=posteris_database&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=posteris_database)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=posteris_database&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=posteris_database)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=posteris_database&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=posteris_database)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=posteris_database&metric=coverage)](https://sonarcloud.io/summary/new_code?id=posteris_database)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=posteris_database&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=posteris_database)
 
-To use this module, the first thing that you want to do is get it using go module. The first thing to do is execute the following command.
+This lib use [Sonarcloud](https://sonarcloud.io/) combined with [Horusec](https://horusec.io/) to understand the code quality and security, blocking the pull request in any vulnerability incidence.
 
-```bash
-go get github.com/finacore/commons-errors
-```
-Now you are ready to use the application in the right way.
+As well as security, performance is a fundamental factor of all __FINACORE__ software, package or modules. This way this package use the __benchmark regression__ to ensure that no performance gaps ocours.
 
-### DefaultError
+The result of benchmark regression is disponible at: [Performance Regeression](https://finacore.github.io/commons-errors/dev/bench/)
 
-The __DefaultError__ is an implementation similar to the default __error__ type, but it is ready to be convertible to __JSON__ in a friendly format.
+## License
 
-There are three ways to create an __DefaultError__ instance, these are arranged below:
+Copyright 2022 finacore.net
 
-1. __Create object from struct__, this is simple but verbose. I really think is no make sense use this way when there is disponible a very simple methods that can be used instead. See the next two ways.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-```go
-err := &commonserrors.DefaultError{
-	Message: "the error message goes here",
-}
-```
+  http://www.apache.org/licenses/LICENSE-2.0
 
-2. __Use the CreateDefaultError function__, the _CreateDefaultError__ function provide a way to create a new __DefaultError__ object just passing a desired error message.
-
-```go
-err := commonserrors.CreateDefaultError("the error message goes here")
-```
-
-3. __Use the MakeDefaultError function__, This way is used when you already have somme error and wanto to oconvert it directly to __JSON__ using this model.
-
-```go
-err := commonserrors.MakeDefaultError(sommeError)
-```
-
-In order to facilitate the processing of errors created, this kind of error provides a method to identificate the error
-through the code. the method is __Status__ and return the error object, that facilitate the usability as shows below.
-
-```go
-err := commonserrors.CreateDefaultError("internal server error").Status(500)
-```
-
-### ValidationError
-
-The __ValidationError__ data structure has as objetive to map a __field__ with some __validation error__ received from the validation process. 
-
-Is important to know that this process has no intention to make validation. It's just a data structure to standardize an validation output in __JSON__ format.
-
-There is two ways to create the __ValidationError__ instance, these are arranged below:
-
-1. __Create object from struct__, this is simple but verbose. I really think is no make sense use this way when there is disponible a very simple method that can be used instead. See the next one.
-
-```go
-err := &commonserrors.ValidationError{
-	Field: "field_name",
-	Message: "the error message goes here",
-}
-```
-2. __Use the CreateValidationError function__, the _CreateValidationError__ function provide a way to create a new __ValidationError__ object just passing the name of field and the desired error message.
-
-```go
-err := commonserrors.CreateValidationError("field_name", "the error message goes here")
-```
-
-### Error()
-
-Both errors objects provide the method __Error()__ that enable the user to obtains the error in a string format. It is simple and follow the patter of the default __error__ object provided nativelly in __Go__ programing language.
-
-This method usage is simple and can be seen in the example bellow.
-
-```go
-formatedStringError := err.Error()
-```
-
-## Benchmark
-
-Thinking in the software quality, the __benchmark regression__ was created. It's can be viewed at the link bellow.
-
-[Performance Regeression](https://finacore.github.io/commons-errors/dev/bench/)
-
-<br><hr>
-<p align="center"><img src="https://raw.githubusercontent.com/finacore/.github/main/horizontal.svg" width="30%"></p>
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
