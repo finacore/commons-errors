@@ -1,32 +1,66 @@
-// Package commonserrors contains encapsulate the basica errors types to helps programers to write
-// low code and at the some time make a good error handling, providing a good log events
-// as needed
+// Package commonserrors encapsulates some methods and data structure responsibles to organize
+// and manage the erros obtained duruing the program execution.
+//
+// Among the characteristics, the one that stand out are the capability to convert the data
+// structure to an string, following the error interface implemented by the golang error, As
+// well the agregation of an integer error code that simplify the error recognitions less the
+// necessity of make reflections in the received object.
 package commonserrors
 
-// DefaultError ç
+// DefaultError is a representaton of the most basic kind of error in this package. It's
+// composed by a message description and an error code. By definition, the error code is
+// not rendered when this structure is coverted to JSON.
 type DefaultError struct {
 	Message string `json:"message"`
 	Code    int    `json:"-"`
 }
 
-// CreateDefaultError function to build a new DefaultError object based on a simple string
+// CreateDefaultError returns a DefaultError object that contains the error message and the
+// error code. By default the error code associated to this error is 500, but it's can be
+// changed calling the method Status(int)
+//
+// Usage:
+//
+//	err := commonserrors.CreateDefaultError("the error message goes here")
 func CreateDefaultError(message string) *DefaultError {
-	return &DefaultError{
+	err := &DefaultError{
 		Message: message,
 	}
+
+	return err.Status(500)
 }
 
-// MakeDefaultError function to build a new DefaultError object based on a pre existend error
+// MakeDefaultError returns a DefaultError object that contains the error message and the
+// error code. This method uses a preexistent error  in order to capture their error message
+// and calls the CreateDefaultError method.
+//
+// As the CreateDefaultError method, this one also set the default status as 500,  but it's
+// can be changed calling the method Status(int)
+//
+// Usage:
+//
+//	err := commonserrors.MakeDefaultError(previousError)
 func MakeDefaultError(err error) *DefaultError {
 	return CreateDefaultError(err.Error())
 }
 
-// Error function to convert DefaultError into a string
+// Error method that returns a string literal containing the error message associated to the
+// data structure.
+//
+// Usage:
+//
+//	err := commonserrors.MakeDefaultError(previousError)
+//	str := err.Error()
 func (e *DefaultError) Error() string {
 	return e.Message
 }
 
-// Status function to set the status code and return the actual stauts
+// Status method is responsable to overwrite the default error code that has set to the data
+// structure and returns the own changed data structure.
+//
+// Usage:
+//
+//	err := commonserrors.MakeDefaultError(previousError).Status(200)
 func (e *DefaultError) Status(status int) *DefaultError {
 	e.Code = status
 	return e
