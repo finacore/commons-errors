@@ -53,9 +53,6 @@ jobs:
       with:
         go-version: ${{ matrix.goVersion }}
 
-    - id: database
-      uses: posteris/ci-database-starter@main
-
     - name: Test
       run: go test -v ./...
 
