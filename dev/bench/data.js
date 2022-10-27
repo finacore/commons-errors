@@ -1,6 +1,6 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1663019274470,
-  "repoUrl": "https://github.com/finacore/commons-errors",
+  "lastUpdate": 1666900137303,
+  "repoUrl": "https://github.com/gsdenys/commons-errors",
   "entries": {
     "Benchmark": [
       {
@@ -1266,6 +1266,60 @@ window.BENCHMARK_DATA = {
           {
             "name": "Benchmark_Set_ValidationError_Status",
             "value": 0.0000042,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "gsdenys@gmail.com",
+            "name": "Denys G. Santos",
+            "username": "gsdenys"
+          },
+          "committer": {
+            "email": "gsdenys@gmail.com",
+            "name": "Denys G. Santos",
+            "username": "gsdenys"
+          },
+          "distinct": true,
+          "id": "5f68a28dc4645c6a97ea608469c85de9ceb1b173",
+          "message": "rename repository",
+          "timestamp": "2022-10-27T15:48:05-04:00",
+          "tree_id": "94026ccd3ff9ad1f725724db8b7c4d34100c2c39",
+          "url": "https://github.com/gsdenys/commons-errors/commit/5f68a28dc4645c6a97ea608469c85de9ceb1b173"
+        },
+        "date": 1666900135640,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "Benchmark_CreateDefaultError",
+            "value": 3e-7,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_MakeDefaultError",
+            "value": 0.0000195,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Set_DefaultError_Status",
+            "value": 0.0000037,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_CreateValidationError",
+            "value": 3e-7,
+            "unit": "ns/op",
+            "extra": "1000000000 times\n2 procs"
+          },
+          {
+            "name": "Benchmark_Set_ValidationError_Status",
+            "value": 0.0000059,
             "unit": "ns/op",
             "extra": "1000000000 times\n2 procs"
           }
