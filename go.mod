@@ -1,4 +1,4 @@
-module github.com/finacore/commons-errors
+module github.com/gsdenys/cerr
 
 go 1.18
 
