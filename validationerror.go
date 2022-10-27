@@ -1,4 +1,4 @@
-// Package commonserrors encapsulates some methods and data structure responsibles to organize
+// Package cerr encapsulates some methods and data structure responsibles to organize
 // and manage the erros obtained duruing the program execution.
 //
 // Among the characteristics, the one that stand out are the capability to convert the data
@@ -9,18 +9,18 @@
 // The first step to use this package is to get it through the command below, then you will be
 // able to import it in your code.
 //
-//	go get github.com/finacore/commons-errors
+//	go get github.com/gsdenys/cerr
 //
 // To avoid the conflicts between packages during the imnport phase, is strongly recommended
 // select other name for this package in the moment of import like shown below:
 //
 //	import (
-//		commonserrors "github.com/finacore/commons-errors"
+//		"github.com/gsdenys/cerr"
 //	)
 //
 // Once imported you can use the package as you prefer. So read the function and methods
 // documentation to know how to use this packagage.
-package commonserrors
+package cerr
 
 import "fmt"
 
@@ -41,7 +41,7 @@ type ValidationError struct {
 //
 // Usage:
 //
-//	err := commonserrors.CreateValidationError("name", "the name should not be empty")
+//	err := cerr.CreateValidationError("name", "the name should not be empty")
 func CreateValidationError(field string, message string) *ValidationError {
 	val := &ValidationError{}
 
@@ -59,7 +59,7 @@ func CreateValidationError(field string, message string) *ValidationError {
 //
 // Usage:
 //
-//	err := commonserrors.CreateValidationError("name", "the name should not be empty")
+//	err := cerr.CreateValidationError("name", "the name should not be empty")
 //	str := err.Error()
 func (e *ValidationError) Error() string {
 	return fmt.Sprintf("%s: %s", e.Field, e.Message)
@@ -70,7 +70,7 @@ func (e *ValidationError) Error() string {
 //
 // Usage:
 //
-//	err := commonserrors.CreateValidationError("name", "the name should not be empty").Status(200)
+//	err := cerr.CreateValidationError("name", "the name should not be empty").Status(200)
 func (e *ValidationError) Status(status int) *ValidationError {
 	e.Code = status
 	return e

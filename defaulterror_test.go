@@ -1,4 +1,4 @@
-package commonserrors
+package cerr
 
 import (
 	"errors"

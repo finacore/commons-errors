@@ -1,30 +1,30 @@
-# Commons Errors
-[![Go Reference](https://pkg.go.dev/badge/github.com/finacore/commons-errors.svg)](https://pkg.go.dev/github.com/finacore/commons-errors)
+# Commons Errors (CERR)
+[![Go Reference](https://pkg.go.dev/badge/github.com/gsdenys/cerr.svg)](https://pkg.go.dev/github.com/gsdenys/cerr)
 
-This module is part of __FINACORE__ software and has as objective to facilitate the error identification and handling throughout the time of software execution. 
+This module is a free software and their objective is to facilitate the error identification and handling throughout in the time of software execution. 
 
-As all other products and modules of __FINACORE__ project, this package has a strong code documentations that generates the fullfil tutorial disponible at [go.dev](https://pkg.go.dev/github.com/finacore/commons-errors) reference page, that is enough for their usage.
+This package has a strong code documentations that generates the fullfil tutorial disponible at [go.dev](https://pkg.go.dev/github.com/gsdenys/cerr) reference page, that is enough for their usage.
 
-Read the full documentation at: [https://pkg.go.dev/github.com/finacore/commons-errors](https://pkg.go.dev/github.com/finacore/commons-errors)
+Read the full documentation at: [https://pkg.go.dev/github.com/gsdenys/cerr](https://pkg.go.dev/github.com/gsdenys/cerr)
 
 ## Software Quality
 
-[![Build & Test](https://github.com/finacore/commons-errors/actions/workflows/build.yml/badge.svg)](https://github.com/finacore/commons-errors/actions/workflows/build.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=finacore_commons-errors&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=finacore_commons-errors)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=finacore_commons-errors&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=finacore_commons-errors)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=finacore_commons-errors&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=finacore_commons-errors)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=finacore_commons-errors&metric=coverage)](https://sonarcloud.io/summary/new_code?id=finacore_commons-errors)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=finacore_commons-errors&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=finacore_commons-errors)
+[![Build & Test](https://github.com/gsdenys/cerr/actions/workflows/build.yml/badge.svg)](https://github.com/gsdenys/cerr/actions/workflows/build.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=gsdenys_cerr&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=gsdenys_cerr)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=gsdenys_cerr&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=gsdenys_cerr)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=gsdenys_cerr&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=gsdenys_cerr)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=gsdenys_cerr&metric=coverage)](https://sonarcloud.io/summary/new_code?id=gsdenys_cerr)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=gsdenys_cerr&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=gsdenys_cerr)
 
 This lib use [Sonarcloud](https://sonarcloud.io/) combined with [Horusec](https://horusec.io/) to understand the code quality and security, blocking the pull request in any vulnerability incidence.
 
-As well as security, performance is a fundamental factor of all __FINACORE__ software, package or modules. This way this package use the __benchmark regression__ to ensure that no performance gaps ocours.
+As well as security, performance is a fundamental factor of all software, package or modules. This way, this package use the __benchmark regression__ to ensure that no performance gaps ocours.
 
-The result of benchmark regression is disponible at: [Performance Regeression](https://finacore.github.io/commons-errors/dev/bench/)
+The result of benchmark regression is disponible at: [Performance Regeression](https://gsdenys.github.io/cerr/dev/bench/)
 
 ## License
 
-Copyright 2022 finacore.net
+Copyright 2022 gsdenys
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

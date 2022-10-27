@@ -1,4 +1,4 @@
-// Package commonserrors encapsulates some methods and data structure responsibles to organize
+// Package cerr encapsulates some methods and data structure responsibles to organize
 // and manage the erros obtained duruing the program execution.
 //
 // Among the characteristics, the one that stand out are the capability to convert the data
@@ -9,18 +9,18 @@
 // The first step to use this package is to get it through the command below, then you will be
 // able to import it in your code.
 //
-//	go get github.com/finacore/commons-errors
+//	go get github.com/gsdenys/cerr
 //
 // To avoid the conflicts between packages during the imnport phase, is strongly recommended
 // select other name for this package in the moment of import like shown below:
 //
 //	import (
-//		commonserrors "github.com/finacore/commons-errors"
+//		 "github.com/gsdenys/cerr"
 //	)
 //
 // Once imported you can use the package as you prefer. So read the function and methods
 // documentation to know how to use this packagage.
-package commonserrors
+package cerr
 
 // DefaultError is a representaton of the most basic kind of error in this package. It's
 // composed by a message description and an error code. By definition, the error code is
@@ -36,7 +36,7 @@ type DefaultError struct {
 //
 // Usage:
 //
-//	err := commonserrors.CreateDefaultError("the error message goes here")
+//	err := cerr.CreateDefaultError("the error message goes here")
 func CreateDefaultError(message string) *DefaultError {
 	err := &DefaultError{
 		Message: message,
@@ -54,7 +54,7 @@ func CreateDefaultError(message string) *DefaultError {
 //
 // Usage:
 //
-//	err := commonserrors.MakeDefaultError(previousError)
+//	err := cerr.MakeDefaultError(previousError)
 func MakeDefaultError(err error) *DefaultError {
 	return CreateDefaultError(err.Error())
 }
@@ -64,7 +64,7 @@ func MakeDefaultError(err error) *DefaultError {
 //
 // Usage:
 //
-//	err := commonserrors.MakeDefaultError(previousError)
+//	err := cerr.MakeDefaultError(previousError)
 //	str := err.Error()
 func (e *DefaultError) Error() string {
 	return e.Message
@@ -75,7 +75,7 @@ func (e *DefaultError) Error() string {
 //
 // Usage:
 //
-//	err := commonserrors.MakeDefaultError(previousError).Status(200)
+//	err := cerr.MakeDefaultError(previousError).Status(200)
 func (e *DefaultError) Status(status int) *DefaultError {
 	e.Code = status
 	return e
