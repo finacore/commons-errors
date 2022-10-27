@@ -21,7 +21,6 @@ jobs:
         with:
           version: latest
 
-
   horusec:
     name: Identify Vulnerabilities
     runs-on: ubuntu-latest
