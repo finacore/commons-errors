@@ -36,11 +36,10 @@ jobs:
           curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
           horusec start -p="./" -e="true"
 
-
-  build:
+  unitytest:
     needs: [golint, horusec]
 
-    name: Build and Test
+    name: Unity Test
     runs-on: ubuntu-latest
 
     strategy:
@@ -60,6 +59,31 @@ jobs:
     - name: Test
       run: go test -v ./...
 
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@master
+        
+      - name: Setup Go (latest)
+        uses: actions/setup-go@v3
+      
+      - name: Run unity test
+        run: |
+          mkdir -p bin
+          go test -short -coverprofile=bin/cov.out ./...
+
+      - name: Run benchmark
+        run: |
+          go test -bench 'Benchmark' ./... | tee bin/bench.txt
+
+      - name: Archive code coverage and bench results
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: bin
 
   sonarcloud:
     needs: build
@@ -74,10 +98,11 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v3
 
-      - name: Run coverage
-        run: |
-          mkdir -p bin
-          go test -short -coverprofile=bin/cov.out ./...
+      - name: Download code coverage results
+        uses: actions/download-artifact@v3
+        with:
+          name: code-coverage-report
+          path: bin
       
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1.4
@@ -86,22 +111,28 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   benchmark:
-    name: Build and Test
+    needs: build
+
+    name: Performance Regeression.
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone Repository
-        uses: actions/checkout@master
-        
-      - name: Setup Go (latest)
-        uses: actions/setup-go@v3
+      - name: Checout repository
+        uses: actions/checkout@v2
 
-      - name: Run benchmark
-        run: |
-          go test -bench 'Benchmark' ./... | tee bin/bench.txt
-
-      - name: Archive code coverage and bench results
-        uses: actions/upload-artifact@v3
+      - name: Download code coverage results
+        uses: actions/download-artifact@v3
         with:
           name: code-coverage-report
           path: bin
+
+      - name: Store benchmark result
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          tool: 'go'
+          output-file-path: bin/bench.txt
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          alert-threshold: '250%'
+          auto-push: true
+          fail-on-alert: true
+          comment-on-alert: true
